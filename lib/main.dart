@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:mychat/Screens/HomeScreen.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -11,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // fontFamily: "openSans",
         primaryColor: Colors.greenAccent, // WhatsApp primary color
         
         appBarTheme: AppBarTheme(
@@ -21,4 +24,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
