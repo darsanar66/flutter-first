@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mychat/Model/ChatModel.dart';
 import 'package:mychat/Pages/ChatPage.dart';
 import 'package:mychat/Screens/HomeScreen.dart';
@@ -17,8 +18,10 @@ class _IndividualpageState extends State<Individualpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
      appBar: AppBar(
       leadingWidth: 80,
+     
       titleSpacing: 0,
       title: InkWell(
        onTap: ()  {
@@ -72,12 +75,13 @@ class _IndividualpageState extends State<Individualpage> {
         },
       itemBuilder: (BuildContext context){
         return [
-          PopupMenuItem(child: Text("New group"), value: "New group",),
-            PopupMenuItem(child: Text("New broadcast"), value: "New broadcast",),
-            PopupMenuItem(child: Text("Linked devices"), value: "Linked devices",),
-            PopupMenuItem(child: Text("Starred messages"), value: "Starred messages",),
-            PopupMenuItem(child: Text("Payments"), value: "Payments",),
-            PopupMenuItem(child: Text("Settings"), value: "Settings",),
+          PopupMenuItem(child: Text("View contact"), value: "View contact",),
+            PopupMenuItem(child: Text("Media,links, docs"), value: "Media, links, docs",),
+            PopupMenuItem(child: Text("Search"), value: "Search",),
+            PopupMenuItem(child: Text("Mute notifications"), value: "Mute notifications",),
+            PopupMenuItem(child: Text("Disappearing messages"), value: "Disappearing messages",),
+            PopupMenuItem(child: Text("WallPaper"), value: "Wallpaper",),
+            PopupMenuItem(child: Text("More"), value: "More", )
    
         ];
       
@@ -109,7 +113,73 @@ class _IndividualpageState extends State<Individualpage> {
       ),
      ),
       
-     ) 
+     ),
+     body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Stack(
+          children: [
+            ListView(), 
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width-60,
+                    child: Card(
+                      margin: EdgeInsets.only(left: 2, right: 2, bottom: 10),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+
+                    child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 5,
+                      minLines: 1,
+                  
+                  decoration: InputDecoration(
+                    border:InputBorder.none,
+                    prefixIcon: IconButton(
+                      onPressed: (){}, 
+                      icon: Icon(Icons.emoji_emotions),
+                      ),
+                      
+                      suffixIcon: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+
+                          IconButton(onPressed: () {}, icon: Icon(Icons.attach_file)
+                          
+                          
+                          
+                          ),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt))
+                        ],
+                      ),
+                      
+                      
+                    hintText: "Type a message",
+                    
+                    contentPadding: EdgeInsets.all(20)
+                  ),
+                    
+                    ))),
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/mic.png'),
+                                  
+                      radius: 25,
+                    
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+          ],
+
+        ),
+     ), 
     );
   }
 }
